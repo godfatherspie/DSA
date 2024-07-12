@@ -223,6 +223,13 @@ void bintree :: inorder_nonrec()
 {
 	inorder_nonrec(root);
 }
+
+
+
+
+//anshuman joshi
+
+
 void bintree :: preorder_nonrec(node *root)
 {
 	stack s;	
