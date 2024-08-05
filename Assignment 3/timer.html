@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Show Current Time</title>
+    <script>
+        function showCurrentTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById("timeDisplay").innerText = timeString;
+        }
+    </script>
+</head>
+<body>
+    <button onclick="showCurrentTime()">Show Current Time</button>
+    <h1 id="timeDisplay"></h1>
+</body>
+</html>

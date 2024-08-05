@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title>Validation Page</title>
+    <style>
+        body {
+            margin-right: 200px;
+            margin-left: 800px;
+            margin-top: 300px;
+            background-color: pink;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <form id="myForm">
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname" required><br><br>
+
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname" required><br><br>
+
+        <label for="email">E-MAIL ADDRESS:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="pnumber">MOBILE NUMBER:</label>
+        <input type="text" id="mobile" name="mobile" pattern="[0-9]{10}" maxlength="10" required ><br><br>
+
+        <label for="mob-brand">SELECT MOBILE BRAND:</label>
+        <select id="mob-brand" name="mob-brand">
+           <option value="">Select Mobile Brand</option>
+           <option value="SAMSUNG">SAMSUNG</option>
+           <option value="APPLE">APPLE</option>
+           <option value="ONEPLUS">ONEPLUS</option>
+        </select><br><br>
+
+        <label for="mob-model">SELECT MOBILE MODEL:</label>
+        <select id="mob-model">
+            <option value="">Select Mobile Model</option>
+        </select><br><br>
+
+        <button type="submit" onclick="alert('SAVED SUCESSFULLY')">Submit</button>
+    </form>
+
+    <script>
+        const mobsByBrand = {
+            "SAMSUNG": ["A34", "A33", "A32", "S22", "S23", "S24"],
+            "APPLE": ["iPhone 11", "iPhone 12", "iPhone 13", "iPhone 14", "iPhone 15"],
+            "ONEPLUS": ["OnePlus 8", "OnePlus 9", "OnePlus 10", "OnePlus 11", "OnePlus Nord"],
+        };
+
+        
+        $("#mob-brand").change(function() {
+            const selectedBrand = $(this).val();
+            const modelSelect = $("#mob-model");
+            modelSelect.empty();
+            modelSelect.append($("<option>").text("Select Mobile Model").val(""));
+            if (selectedBrand in mobsByBrand) {
+                const models = mobsByBrand[selectedBrand];
+                $.each(models, function(index, model) {
+                    modelSelect.append($("<option>").text(model).val(model));
+                });
+            }
+        });
+
+        $("#myForm").submit(function(event) {
+            event.preventDefault();
+            const mobBrand = $("#mob-brand").val();
+            const mobModel = $("#mob-model").val();
+
+            
+        });
+    </script>
+</body>
+</html>
